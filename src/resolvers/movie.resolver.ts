@@ -1,4 +1,4 @@
-import { Arg, Mutation, Resolver } from "type-graphql";
+import { Arg, Mutation, Query, Resolver } from "type-graphql";
 import { CreateMovieInput, Movie } from "../entity/movie.entity";
 import MovieService from "../service/movie.service";
 
@@ -9,7 +9,13 @@ export class MovieResolver {
   }
 
   @Mutation(() => Movie)
-  createMovie(@Arg("input") input: CreateMovieInput) {
+  createMovie(@Arg("movie") input: CreateMovieInput) {
     return this.movieService.createMovie(input);
   }
+
+  @Query(() => [Movie])
+  getMovies() {
+    return this.movieService.getMovies();
+  }
+
 }
