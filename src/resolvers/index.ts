@@ -1,1 +1,3 @@
-export const resolvers = [] as const;
+import { HelloWorldResolver } from "./HelloWorldResolver";
+
+export const resolvers = [HelloWorldResolver] as const;

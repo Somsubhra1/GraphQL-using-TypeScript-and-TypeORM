@@ -37,7 +37,11 @@ async function bootstrap() {
 
   // connect to db
 
-  await createConnection();
+  await createConnection()
+    .then(() => console.log("Successfully connected to DB"))
+    .catch((err) => {
+      console.error("Error connecting to DB", err);
+    });
 }
 
 bootstrap();
