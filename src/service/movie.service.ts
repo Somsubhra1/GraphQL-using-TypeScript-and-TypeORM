@@ -1,5 +1,6 @@
 import {
   CreateMovieInput,
+  DeleteMoviesInput,
   GetMoviesInput,
   GetSingleMovieInput,
   Movie,
@@ -28,11 +29,14 @@ class MovieService {
   async deleteMovie(input: GetSingleMovieInput) {
     const deleteResult = await Movie.delete(input.id);
 
-    console.log(deleteResult);
     return !!deleteResult.affected;
   }
 
-  async deleteMovies(in)
+  async deleteMovies(input: DeleteMoviesInput) {
+    const deleteResult = await Movie.delete(input.ids);
+
+    return !!deleteResult.affected;
+  }
 }
 
 export default MovieService;

@@ -7,7 +7,6 @@ import {
   MaxLength,
   Min,
   MinLength,
-  ValidateNested,
 } from "class-validator";
 import { Field, InputType, Int, ObjectType } from "type-graphql";
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
@@ -87,9 +86,8 @@ export class UpdateMovieInput {
 export class DeleteMoviesInput {
   @IsArray()
   @ArrayNotEmpty()
-  @ValidateNested({ each: true })
   @ArrayMinSize(1)
   @Min(1, { each: true })
-  @Field(() => Int)
+  @Field(() => [Int])
   ids: [number];
 }

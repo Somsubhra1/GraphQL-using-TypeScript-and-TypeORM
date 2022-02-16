@@ -1,6 +1,7 @@
 import { Arg, Mutation, Query, Resolver } from "type-graphql";
 import {
   CreateMovieInput,
+  DeleteMoviesInput,
   GetMoviesInput,
   GetSingleMovieInput,
   Movie,
@@ -37,5 +38,10 @@ export class MovieResolver {
   @Mutation(() => Boolean)
   deleteMovie(@Arg("input") input: GetSingleMovieInput) {
     return this.movieService.deleteMovie(input);
+  }
+    
+  @Mutation(() => Boolean)
+  deleteMovies(@Arg("input") input: DeleteMoviesInput) {
+    return this.movieService.deleteMovies(input);
   }
 }
