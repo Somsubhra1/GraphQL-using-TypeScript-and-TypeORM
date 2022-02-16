@@ -1,5 +1,6 @@
 import {
   CreateMovieInput,
+  GetMoviesInput,
   GetSingleMovieInput,
   Movie,
 } from "../entity/movie.entity";
@@ -9,8 +10,8 @@ class MovieService {
     return Movie.create(input).save();
   }
 
-  async getMovies() {
-    return Movie.find();
+  async getMovies(input: GetMoviesInput) {
+    return Movie.find({ ...input });
   }
 
   async getSingleMovie(input: GetSingleMovieInput) {

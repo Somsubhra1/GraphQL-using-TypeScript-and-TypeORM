@@ -31,6 +31,18 @@ export class CreateMovieInput {
 }
 
 @InputType()
+export class GetMoviesInput {
+  @MinLength(1)
+  @MaxLength(100)
+  @Field(() => String, { nullable: true })
+  title?: string;
+
+  @Min(1)
+  @Field(() => Int, { nullable: true })
+  minutes?: number;
+}
+
+@InputType()
 export class GetSingleMovieInput {
   @Min(1)
   @Field(() => Int)

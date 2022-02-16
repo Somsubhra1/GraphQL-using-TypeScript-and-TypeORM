@@ -1,6 +1,7 @@
 import { Arg, Mutation, Query, Resolver } from "type-graphql";
 import {
   CreateMovieInput,
+  GetMoviesInput,
   GetSingleMovieInput,
   Movie,
 } from "../entity/movie.entity";
@@ -18,8 +19,8 @@ export class MovieResolver {
   }
 
   @Query(() => [Movie])
-  getMovies() {
-    return this.movieService.getMovies();
+  getMovies(@Arg("filters") input: GetMoviesInput) {
+    return this.movieService.getMovies(input);
   }
 
   @Query(() => Movie, { nullable: true })
