@@ -29,3 +29,10 @@ export class CreateMovieInput {
   @Field(() => Int)
   minutes: number;
 }
+
+@InputType()
+export class GetSingleMovieInput {
+  @Min(1)
+  @Field(() => Int)
+  id: number;
+}
