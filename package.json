@@ -1,0 +1,33 @@
+{
+  "name": "typescript-graphql-sql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon --exec ts-node src/server.ts",
+    "start": "ts-node src/server.ts",
+    "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js"
+  },
+  "author": "Somsubhra Das",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server": "^3.6.3",
+    "apollo-server-express": "^3.6.3",
+    "class-validator": "^0.13.2",
+    "config": "^3.3.7",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "graphql": "^15.8.0",
+    "reflect-metadata": "^0.1.10",
+    "sqlite3": "^4.0.3",
+    "type-graphql": "^1.1.1",
+    "typeorm": "0.2.41"
+  },
+  "devDependencies": {
+    "@types/config": "^0.0.41",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "3.3.3333",
+    "ts-node": "3.3.0",
+    "@types/node": "^8.0.29"
+  }
+}
