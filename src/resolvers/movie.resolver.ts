@@ -29,8 +29,13 @@ export class MovieResolver {
     return this.movieService.getSingleMovie(input);
   }
 
-  @Mutation(() => Movie)
+  @Mutation(() => Movie, { nullable: true })
   updateMovie(@Arg("movie") input: UpdateMovieInput) {
     return this.movieService.updateMovie(input);
+  }
+
+  @Mutation(() => Boolean)
+  deleteMovie(@Arg("input") input: GetSingleMovieInput) {
+    return this.movieService.deleteMovie(input);
   }
 }

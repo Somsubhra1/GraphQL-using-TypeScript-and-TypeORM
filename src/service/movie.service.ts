@@ -24,6 +24,13 @@ class MovieService {
 
     return this.getSingleMovie({ id: input.id });
   }
+
+  async deleteMovie(input: GetSingleMovieInput) {
+    const deleteResult = await Movie.delete(input.id);
+
+    console.log(deleteResult);
+    return !!deleteResult.affected;
+  }
 }
 
 export default MovieService;
