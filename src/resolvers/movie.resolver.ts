@@ -4,6 +4,7 @@ import {
   GetMoviesInput,
   GetSingleMovieInput,
   Movie,
+  UpdateMovieInput,
 } from "../entity/movie.entity";
 import MovieService from "../service/movie.service";
 
@@ -26,5 +27,10 @@ export class MovieResolver {
   @Query(() => Movie, { nullable: true })
   getSingleMovie(@Arg("input") input: GetSingleMovieInput) {
     return this.movieService.getSingleMovie(input);
+  }
+
+  @Mutation(() => Movie)
+  updateMovie(@Arg("movie") input: UpdateMovieInput) {
+    return this.movieService.updateMovie(input);
   }
 }

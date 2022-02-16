@@ -48,3 +48,19 @@ export class GetSingleMovieInput {
   @Field(() => Int)
   id: number;
 }
+
+@InputType()
+export class UpdateMovieInput {
+  @Min(1)
+  @Field(() => Int)
+  id: number;
+
+  @MinLength(1)
+  @MaxLength(100)
+  @Field(() => String, { nullable: true })
+  title?: string;
+
+  @Min(1)
+  @Field(() => Int, { nullable: true })
+  minutes?: number;
+}

@@ -3,6 +3,7 @@ import {
   GetMoviesInput,
   GetSingleMovieInput,
   Movie,
+  UpdateMovieInput,
 } from "../entity/movie.entity";
 
 class MovieService {
@@ -16,6 +17,12 @@ class MovieService {
 
   async getSingleMovie(input: GetSingleMovieInput) {
     return Movie.findOne(input.id);
+  }
+
+  async updateMovie(input: UpdateMovieInput) {
+    await Movie.update(input.id, input);
+
+    return this.getSingleMovie({ id: input.id });
   }
 }
 
