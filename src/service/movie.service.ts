@@ -31,6 +31,8 @@ class MovieService {
     console.log(deleteResult);
     return !!deleteResult.affected;
   }
+
+  async deleteMovies(in)
 }
 
 export default MovieService;

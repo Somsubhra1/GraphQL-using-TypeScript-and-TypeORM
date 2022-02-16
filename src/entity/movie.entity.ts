@@ -1,4 +1,14 @@
-import { MaxLength, Min, MinLength } from "class-validator";
+import {
+  ArrayMinSize,
+  ArrayNotEmpty,
+  IsArray,
+  IsInt,
+  IsString,
+  MaxLength,
+  Min,
+  MinLength,
+  ValidateNested,
+} from "class-validator";
 import { Field, InputType, Int, ObjectType } from "type-graphql";
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
@@ -20,11 +30,13 @@ export class Movie extends BaseEntity {
 
 @InputType()
 export class CreateMovieInput {
+  @IsString()
   @MinLength(1)
   @MaxLength(100)
   @Field(() => String)
   title: string;
 
+  @IsInt()
   @Min(1)
   @Field(() => Int)
   minutes: number;
@@ -32,11 +44,13 @@ export class CreateMovieInput {
 
 @InputType()
 export class GetMoviesInput {
+  @IsString()
   @MinLength(1)
   @MaxLength(100)
   @Field(() => String, { nullable: true })
   title?: string;
 
+  @IsInt()
   @Min(1)
   @Field(() => Int, { nullable: true })
   minutes?: number;
@@ -44,6 +58,7 @@ export class GetMoviesInput {
 
 @InputType()
 export class GetSingleMovieInput {
+  @IsInt()
   @Min(1)
   @Field(() => Int)
   id: number;
@@ -51,16 +66,30 @@ export class GetSingleMovieInput {
 
 @InputType()
 export class UpdateMovieInput {
+  @IsInt()
   @Min(1)
   @Field(() => Int)
   id: number;
 
+  @IsString()
   @MinLength(1)
   @MaxLength(100)
   @Field(() => String, { nullable: true })
   title?: string;
 
+  @IsInt()
   @Min(1)
   @Field(() => Int, { nullable: true })
   minutes?: number;
+}
+
+@InputType()
+export class DeleteMoviesInput {
+  @IsArray()
+  @ArrayNotEmpty()
+  @ValidateNested({ each: true })
+  @ArrayMinSize(1)
+  @Min(1, { each: true })
+  @Field(() => Int)
+  ids: [number];
 }
