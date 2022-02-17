@@ -1,7 +1,30 @@
-# Awesome Project Build with TypeORM
+# GraphQL using TypeScript and TypeORM
 
-Steps to run this project:
+## Description
 
-1. Run `npm i` command
-2. Setup database settings inside `ormconfig.json` file
-3. Run `npm start` command
+GraphQL using TypeScript and TypeORM
+
+## Technologies/Dependencies used
+
+- ExpressJS
+- SQLite
+- TypeORM
+- GraphQL
+- Apollo Server
+
+## Installation
+
+```bash
+$ npm install
+```
+
+## Running the app
+
+```bash
+# development
+$ npm run dev
+```
+
+## License
+
+This project is [MIT licensed](LICENSE).
